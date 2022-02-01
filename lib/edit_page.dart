@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class NewPage extends StatelessWidget {
+class EditPage extends StatelessWidget {
   final titleText = 'OurHomeTown';
 
   @override

@@ -1,4 +1,4 @@
-import 'package:five_sense_tells/new_page.dart';
+import 'package:five_sense_tells/edit_page.dart';
 import 'package:five_sense_tells/repo_page.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +32,7 @@ class _CoverPageWidgetState extends State<CoverPageWidget> {
   @override
   void initState() {
     _pages = [
-      NewPage(),
+      EditPage(),
       RepoPage(),
     ];
     super.initState();
@@ -43,6 +43,7 @@ class _CoverPageWidgetState extends State<CoverPageWidget> {
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
+        backgroundColor: Colors.green,
       ),
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -52,20 +53,27 @@ class _CoverPageWidgetState extends State<CoverPageWidget> {
             _selectedIndex = index;
           });
         },
+        selectedItemColor: Colors.green,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.book),
-            activeIcon: Icon(Icons.book_online),
+            icon: Icon(
+              Icons.edit,
+              color: Colors.green,
+            ),
+            activeIcon: Icon(Icons.edit),
             label: '新しく記入',
             tooltip: "新規ページ",
-            backgroundColor: Colors.blue,
+            backgroundColor: Colors.green,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.book),
+            icon: Icon(
+              Icons.book,
+              color: Colors.green,
+            ),
             activeIcon: Icon(Icons.book_online),
             label: 'これまでの作品',
             tooltip: "これまでの作品ページ",
-            backgroundColor: Colors.blue,
+            backgroundColor: Colors.green,
           ),
         ],
       ),
