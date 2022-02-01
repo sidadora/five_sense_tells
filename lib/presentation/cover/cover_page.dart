@@ -1,5 +1,5 @@
-import 'package:five_sense_tells/edit_page.dart';
-import 'package:five_sense_tells/repo_page.dart';
+import 'package:five_sense_tells/edit/edit_page.dart';
+import 'package:five_sense_tells/repo/repo_page.dart';
 import 'package:flutter/material.dart';
 
 class CoverPage extends StatelessWidget {
@@ -49,9 +49,11 @@ class _CoverPageWidgetState extends State<CoverPageWidget> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
         onTap: (index) {
-          setState(() {
-            _selectedIndex = index;
-          });
+          setState(
+            () {
+              _selectedIndex = index;
+            },
+          );
         },
         selectedItemColor: Colors.green,
         items: const <BottomNavigationBarItem>[
