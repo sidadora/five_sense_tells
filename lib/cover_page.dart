@@ -1,10 +1,42 @@
+import 'package:five_sense_tells/new_page.dart';
+import 'package:five_sense_tells/repo_page.dart';
 import 'package:flutter/material.dart';
 
 class CoverPage extends StatelessWidget {
   const CoverPage({Key? key}) : super(key: key);
-  final String title = '五感観察日誌';
-  final String choix1 = '新しく記入';
-  final String choix2 = 'これまでの作品';
+
+  static const String _title = '五感観察日誌';
+
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: _title,
+      home: CoverPageWidget(),
+    );
+  }
+}
+
+class CoverPageWidget extends StatefulWidget {
+  const CoverPageWidget({Key? key}) : super(key: key);
+
+  @override
+  State<CoverPageWidget> createState() => _CoverPageWidgetState();
+}
+
+class _CoverPageWidgetState extends State<CoverPageWidget> {
+  int _selectedIndex = 0;
+  late List<Widget> _pages;
+  final String title = "五感観察日誌";
+
+  @override
+  void initState() {
+    _pages = [
+      NewPage(),
+      RepoPage(),
+    ];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,16 +44,27 @@ class CoverPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Center(
-        child: Text(title),
-      ),
+      body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _selectedIndex,
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.book),
             activeIcon: Icon(Icons.book_online),
-            label: 'Book',
-            tooltip: "book page",
+            label: '新しく記入',
+            tooltip: "新規ページ",
+            backgroundColor: Colors.blue,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.book),
+            activeIcon: Icon(Icons.book_online),
+            label: 'これまでの作品',
+            tooltip: "これまでの作品ページ",
             backgroundColor: Colors.blue,
           ),
         ],
