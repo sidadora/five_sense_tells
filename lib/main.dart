@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'cover_page.dart';
@@ -8,14 +7,12 @@ import 'cover_page.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-      .then((_) => {
-            runApp(
-              //Riverpodを使うための設定
-              ProviderScope(
-                child: FiveSenseTells(),
-              ),
-            )
-          });
+  runApp(
+    //Riverpodを使うための設定
+    ProviderScope(
+      child: FiveSenseTells(),
+    ),
+  );
 }
 
 class FiveSenseTells extends StatelessWidget {
